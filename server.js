@@ -72,6 +72,23 @@ var Movie = sequelize.define('movies', {
 }, {
   timestamps: false
 });
+var Actor = sequelize.define('actors', {
+  name: {
+    type: Sequelize.STRING,
+    field: 'name'
+  },
+  age: {
+    type: Sequelize.STRING,
+    field: 'age'
+  },
+  movieplayed: {
+    type: Sequelize.STRING,
+    field: 'movieplayed'
+  },
+ 
+}, {
+  timestamps: false
+});
 
 
 // create a movie
@@ -82,6 +99,15 @@ app.post('/movies', function(request,response) {
       });
   });
 });
+// create a movie
+app.post('/actors', function(request,response) {
+  Actor.create(request.body).then(function(actor) {
+      Actor.findById(actor.id).then(function(actor) {
+          response.status(201).send(actor);
+      });
+  });
+});
+
 
 
 app.get('/movies', function(request,response){
@@ -90,11 +116,26 @@ app.get('/movies', function(request,response){
         response.status(200).send(movies);
     });
 });
+app.get('/actors', function(request,response){
+    
+    Actor.findAll().then(function(actors){
+        response.status(200).send(actors);
+    });
+});
 
 app.get('/movies/:id', function(request,response){
     Movie.findById(request.params.id).then(function(movie){
         if(movie) {
             response.status(200).send(movie);
+        } else {
+            response.status(404).send();
+        }
+    });
+});
+app.get('/actors/:id', function(request,response){
+    Actor.findById(request.params.id).then(function(actor){
+        if(actor) {
+            response.status(200).send(actor);
         } else {
             response.status(404).send();
         }
@@ -108,6 +149,25 @@ app.put('/movies/:id', function(request,response){
         .then(function(movie){
             if(movie) {
                 movie
+                    .updateAttributes(request.body)
+                    .then(function(){
+                        response.status(200).send('updated');
+                    })
+                    .catch(function(error){
+                        console.warn(error);
+                        response.status(500).send('server error');
+                    });
+            } else {
+                response.status(404).send();
+            }
+        });
+});
+app.put('/actors/:id', function(request,response){
+    Actor
+        .findById(request.params.id)
+        .then(function(actor){
+            if(actor) {
+                actor
                     .updateAttributes(request.body)
                     .then(function(){
                         response.status(200).send('updated');
@@ -142,5 +202,26 @@ app.delete('/movies/:id', function(req,res){
             }
         });
 });
+
+app.delete('/actors/:id', function(req,res){
+    Actor
+        .findById(req.params.id)
+        .then(function(actor){
+            if(actor) {
+                actor
+                    .destroy()
+                    .then(function(){
+                        res.status(204).send();
+                    })
+                    .catch(function(error){
+                        console.warn(error);
+                        res.status(500).send('server error');
+                    });
+            } else {
+                res.status(404).send();
+            }
+        });
+});
+
 
 

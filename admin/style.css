@@ -6,6 +6,15 @@ body {
     font-family: Arial, Helvetica, Sans-Serif;
     color: #ccc;
     background: url('images/body-bg.gif');
+   
+    
+}
+
+th {
+  color: black; /* bullet color */
+}
+td {
+  color: red; /* bullet color */
 }
 
 #image{
@@ -15,7 +24,10 @@ body {
      opacity: 0.2;
     
 }
-
+#record_content
+{
+ color:black;   
+}
 #navigation { float:right; clear:right; padding-top:28px; padding-bottom:47px; }
 #navigation ul { list-style:none; }
 #navigation ul li { float:left; display:inline; padding-left:29px;  }

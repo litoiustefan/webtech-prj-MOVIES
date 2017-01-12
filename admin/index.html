@@ -11,10 +11,11 @@
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    
 <!-- Custom JS file -->
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/scriptul.js"></script>
+
 <link rel="stylesheet" href="style.css" type="text/css" media="all" />
     </head>
-    <body>
+    <body onload="readRecords()">
         <div id="navigation">
 			<ul>
 			    <li><a class="active" href="#">HOME</a></li>
@@ -38,7 +39,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Best movies all times</h1>
+            <h1>Best movies all time</h1>
         </div>
     </div>
     <br/>
@@ -60,8 +61,8 @@
 							<th>Name</th>
 							<th>Year</th>
 							<th>Genre</th>
-							<th>Rating</th>
-							<th>Duration</th>
+							<th>Update</th>
+							<th>Exclude</th>
 						</tr>
             		</tr>
 				</<table>
