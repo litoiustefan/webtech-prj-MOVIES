@@ -4,6 +4,8 @@ var cors = require('cors');
 var app = new express();
 app.use(bodyParser.json());
 app.use(cors());
+// include static files in the admin folder
+app.use('/admin', express.static('admin'));
 
 app.listen(process.env.PORT);
 
