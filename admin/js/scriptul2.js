@@ -1,11 +1,11 @@
 // READ records
 function readRecords() {
-    $.get("/movies/", {}, function (data, status) {
+    $.get("/actors/", {}, function (data, status) {
         data.forEach(function(value) {
             var row = '<tr id="row_id_'+ value.id +'">'
             			+ displayColumns(value)
         				+ '</tr>';
-            $('#movies').append(row);
+            $('#actors').append(row);
         });
     });
 }
@@ -15,8 +15,8 @@ function readRecords() {
 function displayColumns(value) {
     return 	'<td>'+value.id+'</td>'
             + '<td class="name">'+value.name+'</td>'
-			+ '<td class="year">'+value.year.substring(0,255)+' ...</td>'
-			+ '<td class="genre">'+value.genre+'</td>'
+			+ '<td class="age">'+value.age.substring(0,255)+' ...</td>'
+			+ '<td class="movieplayed">'+value.movieplayed+'</td>'
 			+ '<td align="center">'
 			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
 			+ '</td>'
@@ -28,28 +28,25 @@ function displayColumns(value) {
 function addRecord() {
     $('#id').val('');
     $('#name').val('');
-    $('#year').val('');
-    $('#genre').val('');
-    $('#rating').val('');
-    $('#duration').val('');
+    $('#age').val('');
+    $('#movieplayed').val('');
+  
     
     $('#myModalLabel').html('Add');
     $('#add_new_record_modal').modal('show');
 }
 
 function viewRecord(id) {
-    var url = "/movies/" + id;
+    var url = "/actors/" + id;
     
     $.get(url, {}, function (data, status) {
         //bind the values to the form fields
         $('#name').val(data.name);
-        $('#year').val(data.year);
-        $('#genre').val(data.genre);
-        $('#rating').val(data.rating);
-        $('#duration').val(data.duration);
+        $('#age').val(data.year);
+        $('#movieplayed').val(data.genre);
         
         $('#id').val(id);
-        $('#myModalLabel').html('Edit Movie');
+        $('#myModalLabel').html('Edit Actor');
         
         $('#add_new_record_modal').modal('show');
     });
@@ -65,7 +62,7 @@ function saveRecord() {
 
 function createRecord(formData) {
     $.ajax({
-        url: '/movies/',
+        url: '/actors/',
         type: 'POST',
         accepts: {
             json: 'application/json'
@@ -77,7 +74,7 @@ function createRecord(formData) {
             var row = '<tr id="row_id_'+ data.id +'">'
             			+ displayColumns(data)
         				+ '</tr>';
-            $('#movies').append(row);
+            $('#actors').append(row);
         } 
     });
 }
@@ -92,15 +89,15 @@ function updateRecord(formData) {
         data: formData,
         success: function(data) {
             $('#row_id_'+formData.id+'>td.name').html(formData.name);
-            $('#row_id_'+formData.id+'>td.year').html(formData.year.substring(0,255)+' ...');
-            $('#row_id_'+formData.id+'>td.genre').html(formData.genre);
+            $('#row_id_'+formData.id+'>td.age').html(formData.year.substring(0,255)+' ...');
+            $('#row_id_'+formData.id+'>td.movieplayed').html(formData.genre);
             $('#add_new_record_modal').modal('hide');
         } 
     });
 }
 function deleteRecord(id) {
     $.ajax({
-        url: '/movies/'+id,
+        url: '/actors/'+id,
         type: 'DELETE',
         success: function(data) {
             $('#row_id_'+id).remove();

@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <!-- Jquery JS file -->
+          <!-- Jquery JS file -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- Bootstrap CSS File  -->
@@ -14,35 +13,16 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
    
 <!-- Custom JS file -->
-<script type="text/javascript" src="js/scriptul.js"></script>
+<script type="text/javascript" src="scriptul2.js"></script>
 
 <link rel="stylesheet" href="style.css" type="text/css" media="all" />
     </head>
-    <body  onload="readRecords()">
-        <div id="navigation">
-			<ul >
-			    <li><a class="active" href="index.html">HOME</a></li>
-			    <li><a href="partials/news.html">NEWS</a></li>
-			    <li><a href="partials/intheaters.html">IN THEATERS</a></li>
-			    <li><a href="partials/actors.html">ACTORS</a></li>
-			    <li><a href="partials/contact.html">CONTACT</a></li>
-			 
-			</ul>
-		</div>
-		
-		
-		<div id="search">
-				<form action="home_submit" method="get" accept-charset="utf-8">
-					<label for="search-field">SEARCH</label>					
-					<input type="text" name="search field" value="Enter search here" id="search-field" title="Enter search here" class="blink search-field"  />
- 				<input type="submit" value="GO!" class="search-button" />
-				</form>
-			</div>
-        <!-- Content Section -->
-<div class="container">
+    
+     <body  onload="readRecords()">
+         <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Best movies all time</h1>
+            <h1>Actors</h1>
         </div>
     </div>
     <br/>
@@ -58,12 +38,12 @@
             <div class="records_content">
                 <br/>
                 <h3>Movies</h3>
-                <table id="movies" class="table table-bordered table-striped">
+                <table id="actors" class="table table-bordered table-striped">
 						<tr>
 							<th>ID.</th>
 							<th>Name</th>
-							<th>Year</th>
-							<th>Genre</th>
+							<th>Age</th>
+							<th>MoviePlayed</th>
 							<th>Update</th>
 							<th>Exclude</th>
 						</tr>
@@ -73,15 +53,12 @@
         </div>
     </div>
 </div>
-<!-- /Content Section -->
-<!-- Bootstrap Modals -->
-
 <div class="modal fade" id="add_new_record_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add New Movie</h4>
+                <h4 class="modal-title" id="myModalLabel">Add New Actor</h4>
             </div>
             <div class="modal-body">
                 <form id="record_form">
@@ -92,24 +69,16 @@
                     </div>
     
                     <div class="form-group">
-                        <label for="year">Year</label>
-                        <textarea name="year" id="year" placeholder="Year"  class="form-control"></textarea>
+                        <label for="age">Age</label>
+                        <textarea name="age" id="age" placeholder="age"  class="form-control"></textarea>
                     </div>
     
                     <div class="form-group">
-                        <label for="genre">Genre</label>
-                        <input name="genre" type="text" id="genre" placeholder="Genre" class="form-control"/>
+                        <label for="movieplayed">MoviePlayed</label>
+                        <input name="movieplayed" type="text" id="movieplayed" placeholder="MoviePlayed" class="form-control"/>
                     </div>
     
-                    <div class="form-group">
-                        <label for="rating">Rating</label>
-                        <input name="rating" type="text" id="rating" placeholder="Rating" class="form-control"/>
-                    </div>
                     
-                    <div class="form-group">
-                        <label for="duration">Duration</label>
-                        <input name="duration" type="text" id="duration" placeholder="Duration" class="form-control"/>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -119,9 +88,7 @@
         </div>
     </div>
 </div>
-<!-- // Modal -->
-
-        
+         
     </body>
-  
+         
 </html>
