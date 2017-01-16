@@ -15,7 +15,7 @@ function readRecords() {
 function displayColumns(value) {
     return 	'<td>'+value.id+'</td>'
             + '<td class="name">'+value.name+'</td>'
-			+ '<td class="age">'+value.age.substring(0,255)+' ...</td>'
+			+ '<td class="age">'+value.age+'</td>'
 			+ '<td class="movieplayed">'+value.movieplayed+'</td>'
 			+ '<td align="center">'
 			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
@@ -89,7 +89,7 @@ function updateRecord(formData) {
         data: formData,
         success: function(data) {
             $('#row_id_'+formData.id+'>td.name').html(formData.name);
-            $('#row_id_'+formData.id+'>td.age').html(formData.year.substring(0,255)+' ...');
+            $('#row_id_'+formData.id+'>td.age').html(formData.year);
             $('#row_id_'+formData.id+'>td.movieplayed').html(formData.genre);
             $('#add_new_record_modal').modal('hide');
         } 
